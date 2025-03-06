@@ -45,8 +45,7 @@ public class Asignatura {
     public void inscribirAlumno(Alumno alumno) {
         if (alumno == null || alumnousado.contains(alumno)) {
             throw new IllegalArgumentException("No insertado");
-        }
-        alumnousado.add(alumno);
+        
         System.out.println("Alumno " + alumno.getNombre() + " inscrito en " + this.nombreasignatura);
     }
 
