@@ -159,7 +159,7 @@ public class mainasignatura {
             } catch (IllegalArgumentException e) {
                 System.out.println("Error: " + e.getMessage());
                 datosValidos = false;
-                scanner.nextLine(); // Limpiar el buffer del scanner
+                scanner.nextLine();
             }
         } while (!datosValidos);
     }
