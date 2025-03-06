@@ -23,6 +23,7 @@ public class Asignatura {
     public double getNotas() {
         return notas;
     }
+    gkjwrlgqwgnnwrg wjggwgnqwnwqg gnqnnwgjnjgnjqrng rgrjqnjqwnjwg
 
     public Alumno getAlumno() {
         return alumno;
