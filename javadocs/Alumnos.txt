@@ -1,0 +1,122 @@
+package entornoAPPtrabajo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * La clase {@code Alumnos} representa a un estudiante con atributos básicos 
+ * como nombre, edad y DNI. Se asegura de que el DNI sea único para cada alumno.
+ * Además, incluye validaciones para garantizar la integridad de los datos.
+ * 
+ * @author [Tu Nombre]
+ * @version 1.0
+ */
+public class Alumnos {
+    private String nombreAlumno;
+    private int edad;
+    private String dni;
+
+    /** Lista estática para almacenar los DNIs ya utilizados y evitar duplicados. */
+    private static final List<String> dnisUsados = new ArrayList<>();
+
+    /** Patrón regex para validar el formato del DNI español. */
+    private static final String PATRON_DNI = "^\\d{8}[A-Za-z]$";
+
+    /**
+     * Constructor de la clase {@code Alumnos}.
+     * 
+     * @param nombre Nombre del alumno, debe tener entre 3 y 50 caracteres alfabéticos.
+     * @param dni DNI del alumno, debe cumplir el formato español y ser único.
+     * @param edad Edad del alumno, debe ser un número positivo.
+     * @throws IllegalArgumentException Si algún parámetro no cumple con las validaciones.
+     */
+    public Alumnos(String nombre, String dni, int edad) {
+        setNombre(nombre);
+        setEdad(edad);
+        setDni(dni);
+    }
+
+    /**
+     * Obtiene el nombre del alumno.
+     * 
+     * @return Nombre del alumno.
+     */
+    public String getNombre() {
+        return nombreAlumno;
+    }
+
+    /**
+     * Establece el nombre del alumno. Debe contener solo letras y espacios, 
+     * con una longitud entre 3 y 50 caracteres.
+     * 
+     * @param nombre Nombre del alumno.
+     * @throws IllegalArgumentException Si el nombre no cumple con las restricciones.
+     */
+    public void setNombre(String nombre) {
+        if (nombre != null && nombre.matches("^[A-Za-z\\s]{3,50}$")) {
+            this.nombreAlumno = nombre;
+        } else {
+            throw new IllegalArgumentException("Nombre erróneo");
+        }
+    }
+
+    /**
+     * Obtiene la edad del alumno.
+     * 
+     * @return Edad del alumno.
+     */
+    public int getEdad() {
+        return edad;
+    }
+
+    /**
+     * Establece la edad del alumno. Debe ser un valor mayor a 0.
+     * 
+     * @param edad Edad del alumno.
+     * @throws IllegalArgumentException Si la edad es menor o igual a 0.
+     */
+    public void setEdad(int edad) {
+        if (edad > 0) {
+            this.edad = edad;
+        } else {
+            throw new IllegalArgumentException("Edad debe ser mayor que 0");
+        }
+    }
+
+    /**
+     * Obtiene el DNI del alumno.
+     * 
+     * @return DNI del alumno.
+     */
+    public String getDni() {
+        return dni;
+    }
+
+    /**
+     * Establece el DNI del alumno, asegurando que cumple con el formato español 
+     * y que no esté repetido en la lista de DNIs ya usados.
+     * 
+     * @param dni DNI del alumno.
+     * @throws IllegalArgumentException Si el formato del DNI es incorrecto o ya está en uso.
+     */
+    public void setDni(String dni) {
+        if (!dni.matches(PATRON_DNI)) {
+            throw new IllegalArgumentException("Formato de DNI incorrecto");
+        }
+        if (dnisUsados.contains(dni)) {
+            throw new IllegalArgumentException("El DNI ya está en uso");
+        }
+        dnisUsados.add(dni);
+        this.dni = dni;
+    }
+
+    /**
+     * Devuelve una representación en cadena del objeto {@code Alumnos}.
+     * 
+     * @return Cadena con los datos del alumno.
+     */
+    @Override
+    public String toString() {
+        return "Alumno{nombreAlumno=" + nombreAlumno + ", edad=" + edad + ", dni=" + dni + "}";
+    }
+}
