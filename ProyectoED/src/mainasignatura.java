@@ -129,7 +129,7 @@ public class mainasignatura {
                     asignatura.setNotas(nota);
                 }
                 System.out.println("Notas ingresadas exitosamente.");
-            } catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException ) {
                 System.out.println("Error: " + e.getMessage());
                 datosValidos = false;
                 scanner.nextLine();
