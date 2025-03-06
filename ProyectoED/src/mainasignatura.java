@@ -1,4 +1,4 @@
-//BY RBX
+//BY
 package TrabajoEntorno;
 
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class mainasignatura {
                 case 2: crearCurso(); break;
                 case 3: agregarAsignaturas(); break;
                 case 4: ingresarNotas(); break;
-                case 5: mostrarInformacion(); break;
+                case 5: mostrarInformacion(); 
                 case 6: System.out.println("Saliendo del sistema..."); break;
                 default: System.out.println("Opción no válida. Intente de nuevo.");
             }
@@ -42,7 +42,7 @@ public class mainasignatura {
         boolean datosValidos;
         do {
             datosValidos = true;
-            try {
+            try{
                 System.out.print("Ingrese el nombre del alumno: ");
                 String nombre = scanner.nextLine();
                 System.out.print("Ingrese la edad del alumno: ");
@@ -50,7 +50,7 @@ public class mainasignatura {
                 scanner.nextLine();
                 System.out.print("Ingrese el DNI del alumno: ");
                 String dni = scanner.nextLine();
-                Alumno alumno = new Alumno(nombre, dni, edad);
+                Alumno alumno = new Alumno(, dni, edad);
                 alumnos.add(alumno);
                 System.out.println("Alumno creado exitosamente.");
             } catch (IllegalArgumentException e) {
@@ -67,7 +67,7 @@ public class mainasignatura {
             datosValidos = true;
             try {
                 Alumno alumno = seleccionarAlumno();
-                if (alumno == null) return;
+                if (alumno == null) ;
                 System.out.print("Ingrese el nombre del curso (Ej: 1ºA): ");
                 String nombreCurso = scanner.nextLine();
                 Curso curso = new Curso(nombreCurso, alumno, new ArrayList<>());
@@ -159,7 +159,7 @@ public class mainasignatura {
             } catch (IllegalArgumentException e) {
                 System.out.println("Error: " + e.getMessage());
                 datosValidos = false;
-                scanner.nextLine(); // Limpiar el buffer del scanner
+                scanner.nextLine();
             }
         } while (!datosValidos);
     }

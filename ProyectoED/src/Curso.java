@@ -1,10 +1,10 @@
-package TrabajoEntorno;
+package ProyectoED.src;
 
 import java.util.List;
 
 public class Curso {
     private String nombreCurso;
-    private List<Asignatura> asignaturas;
+    private List<Asignatura> asignaturas =;
     private Alumno alumno;
     
     public Curso(String nombreCurso, Alumno alumno, List<Asignatura> asignaturas) {
@@ -42,8 +42,6 @@ public class Curso {
     public void setAsignaturas(List<Asignatura> asignaturas) {
         if (asignaturas == null || asignaturas.isEmpty()) {
             throw new IllegalArgumentException("El curso debe tener al menos una asignatura");
-        }
-        this.asignaturas = asignaturas;
     }
 
     @Override

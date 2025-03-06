@@ -45,19 +45,13 @@ public class Asignatura {
     public void inscribirAlumno(Alumno alumno) {
         if (alumno == null || alumnousado.contains(alumno)) {
             throw new IllegalArgumentException("No insertado");
-        }
-        alumnousado.add(alumno);
+        
         System.out.println("Alumno " + alumno.getNombre() + " inscrito en " + this.nombreasignatura);
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Asignatura{");
-        sb.append("notas=").append(notas);
-        sb.append(", nombre=").append(nombreasignatura);
-        sb.append(", alumno=").append(alumno.getNombre());
-        sb.append('}');
-        return sb.toString();
+        return "Asignatura [nombreasignatura=" + nombreasignatura + ", notas=" + notas + ", alumno=" + alumno + "]";
     }
+
 }
