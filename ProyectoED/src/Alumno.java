@@ -21,14 +21,6 @@ public class Alumno {
         return nombreAlumno;
     }
 
-    public void setNombre(String nombre) {
-        if (nombre != null && nombre.matches("^[A-Za-z\\s]{3,50}$")) {
-            this.nombreAlumno = nombre;
-        } else {
-            throw new IllegalArgumentException("Nombre erróneo");
-        }
-    }
-
     public int getEdad() {
         return edad;
     }
