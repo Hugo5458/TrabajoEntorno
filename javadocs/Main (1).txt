@@ -1,0 +1,229 @@
+package entornoAPPtrabajo;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+/**
+ * Clase principal que gestiona el sistema de creación de alumnos, cursos y asignaturas,
+ * así como la asignación de notas a los alumnos. Permite al usuario interactuar con
+ * el sistema a través de un menú con opciones para realizar diversas acciones.
+ */
+public class Main {
+    
+    // Scanner para leer la entrada del usuario
+    private static Scanner scanner = new Scanner(System.in);
+    
+    // Listas para almacenar los alumnos, cursos y asignaturas
+    private static List<Alumnos> alumnos = new ArrayList<>();
+    private static List<Curso> cursos = new ArrayList<>();
+    private static List<Asignatura> asignaturas = new ArrayList<>();
+
+    /**
+     * Método principal que ejecuta el menú interactivo del sistema.
+     * Permite al usuario elegir entre crear alumnos, crear cursos, agregar asignaturas,
+     * ingresar notas y mostrar la información de los alumnos.
+     * 
+     * @param args Argumentos de la línea de comandos (no utilizados en este caso).
+     */
+    public static void main(String[] args) {
+        int opcion;
+        do {
+            // Menú de opciones
+            System.out.println("\n--- MENÚ ---");
+            System.out.println("1. Crear Alumno");
+            System.out.println("2. Crear Curso");
+            System.out.println("3. Agregar Asignaturas");
+            System.out.println("4. Ingresar Notas");
+            System.out.println("5. Mostrar Información");
+            System.out.println("6. Salir");
+            System.out.print("Seleccione una opción: ");
+
+            // Leer la opción seleccionada por el usuario
+            opcion = scanner.nextInt();
+            scanner.nextLine();
+
+            // Ejecutar la acción correspondiente según la opción
+            switch (opcion) {
+                case 1: crearAlumno(); break;
+                case 2: crearCurso(); break;
+                case 3: agregarAsignaturas(); break;
+                case 4: ingresarNotas(); break;
+                case 5: mostrarInformacion(); break;
+                case 6: System.out.println("Saliendo del sistema..."); break;
+                default: System.out.println("Opción no válida. Intente de nuevo.");
+            }
+        } while (opcion != 6);
+    }
+
+    /**
+     * Permite al usuario crear un nuevo alumno. El nombre, edad y DNI del alumno
+     * son solicitados al usuario. Si los datos no son válidos, se muestra un mensaje de error.
+     */
+    private static void crearAlumno() {
+        boolean datosValidos;
+        do {
+            datosValidos = true;
+            try {
+                System.out.print("Ingrese el nombre del alumno: ");
+                String nombre = scanner.nextLine();
+                System.out.print("Ingrese la edad del alumno: ");
+                int edad = scanner.nextInt();
+                scanner.nextLine();
+                System.out.print("Ingrese el DNI del alumno: ");
+                String dni = scanner.nextLine();
+                Alumnos alumno = new Alumnos(nombre, dni, edad);
+                alumnos.add(alumno);
+                System.out.println("Alumno creado exitosamente.");
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+                datosValidos = false;
+                scanner.nextLine(); // Limpiar el buffer del scanner
+            }
+        } while (!datosValidos);
+    }
+
+    /**
+     * Permite al usuario crear un curso y asignarlo a un alumno previamente registrado.
+     * Se solicita el nombre del curso y se vincula a un alumno seleccionado.
+     */
+    private static void crearCurso() {
+        boolean datosValidos;
+        do {
+            datosValidos = true;
+            try {
+                Alumnos alumno = seleccionarAlumno();
+                if (alumno == null) return;
+                System.out.print("Ingrese el nombre del curso (Ej: 1ºA): ");
+                String nombreCurso = scanner.nextLine();
+                Curso curso = new Curso(nombreCurso, alumno, new ArrayList<>());
+                cursos.add(curso);
+                System.out.println("Curso creado exitosamente.");
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+                datosValidos = false;
+                scanner.nextLine(); // Limpiar el buffer del scanner
+            }
+        } while (!datosValidos);
+    }
+
+    /**
+     * Permite al usuario agregar asignaturas a un alumno. Se solicita la cantidad de asignaturas
+     * y luego el nombre de cada asignatura para asociarlas al alumno seleccionado.
+     */
+    private static void agregarAsignaturas() {
+        boolean datosValidos;
+        do {
+            datosValidos = true;
+            try {
+                Alumnos alumno = seleccionarAlumno();
+                if (alumno == null) return;
+                System.out.print("Ingrese la cantidad de asignaturas: ");
+                int cantidadAsignaturas = scanner.nextInt();
+                scanner.nextLine();
+                for (int i = 0; i < cantidadAsignaturas; i++) {
+                    System.out.print("Ingrese el nombre de la asignatura " + (i + 1) + ": ");
+                    String nombreAsignatura = scanner.nextLine();
+                    Asignatura asignatura = new Asignatura(nombreAsignatura, 0, alumno);
+                    asignaturas.add(asignatura);
+                }
+                System.out.println("Asignaturas agregadas exitosamente.");
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+                datosValidos = false;
+                scanner.nextLine(); // Limpiar el buffer del scanner
+            }
+        } while (!datosValidos);
+    }
+
+    /**
+     * Permite al usuario ingresar las notas de las asignaturas de un alumno. Para cada asignatura
+     * del alumno seleccionado, se solicita la nota.
+     */
+    private static void ingresarNotas() {
+        boolean datosValidos;
+        do {
+            datosValidos = true;
+            try {
+                Alumnos alumno = seleccionarAlumno();
+                if (alumno == null) return;
+                List<Asignatura> asignaturasAlumno = new ArrayList<>();
+                for (Asignatura asignatura : asignaturas) {
+                    if (asignatura.getAlumno().equals(alumno)) {
+                        asignaturasAlumno.add(asignatura);
+                    }
+                }
+                if (asignaturasAlumno.isEmpty()) {
+                    System.out.println("Este alumno no tiene asignaturas registradas.");
+                    return;
+                }
+                for (Asignatura asignatura : asignaturasAlumno) {
+                    System.out.print("Ingrese la nota de " + asignatura.getNombre() + ": ");
+                    double nota = scanner.nextDouble();
+                    asignatura.setNotas(nota);
+                }
+                System.out.println("Notas ingresadas exitosamente.");
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+                datosValidos = false;
+                scanner.nextLine(); // Limpiar el buffer del scanner
+            }
+        } while (!datosValidos);
+    }
+
+    /**
+     * Muestra la información completa de un alumno, incluyendo su nombre, los cursos
+     * en los que está inscrito y las asignaturas con sus respectivas notas.
+     */
+    private static void mostrarInformacion() {
+        boolean datosValidos;
+        do {
+            datosValidos = true;
+            try {
+                Alumnos alumno = seleccionarAlumno();
+                if (alumno == null) return;
+                System.out.println("\nInformación del Alumno:");
+                System.out.println(alumno);
+                for (Curso curso : cursos) {
+                    if (curso.getAlumno().equals(alumno)) {
+                        System.out.println("Curso: " + curso.getNombreCurso());
+                    }
+                }
+                for (Asignatura asignatura : asignaturas) {
+                    if (asignatura.getAlumno().equals(alumno)) {
+                        System.out.println("Asignatura: " + asignatura.getNombre() + " - Nota: " + asignatura.getNotas());
+                    }
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+                datosValidos = false;
+                scanner.nextLine(); // Limpiar el buffer del scanner
+            }
+        } while (!datosValidos);
+    }
+
+    /**
+     * Permite seleccionar un alumno a partir de su DNI.
+     * 
+     * @return El alumno seleccionado, o null si no se encuentra el alumno.
+     */
+    private static Alumnos seleccionarAlumno() {
+        if (alumnos.isEmpty()) {
+            System.out.println("No hay alumnos registrados. Primero cree un alumno.");
+            return null;
+        }
+        System.out.println("Seleccione un alumno por DNI: ");
+        for (Alumnos alumno : alumnos) {
+            System.out.println("- " + alumno.getDni() + " (" + alumno.getNombre() + ")");
+        }
+        System.out.print("Ingrese el DNI del alumno: ");
+        String dni = scanner.nextLine();
+        for (Alumnos alumno : alumnos) {
+            if (alumno.getDni().equals(dni)) {
+                return alumno;
+            }
+        }
+        System.out.println("Alumno no encontrado.");
+        return null;
+    }
+}

@@ -1,0 +1,107 @@
+package entornoAPPtrabajo;
+
+import java.util.List;
+
+/**
+ * Representa un curso que contiene un nombre, un alumno y una lista de asignaturas.
+ * El curso está asociado a un alumno y tiene al menos una asignatura.
+ */
+public class Curso {
+    
+    private String nombreCurso;
+    private List<Asignatura> asignaturas;
+    private Alumnos alumno;
+    
+    /**
+     * Constructor de la clase Curso.
+     * 
+     * @param nombreCurso El nombre del curso, que debe cumplir con un patrón específico.
+     * @param alumno El alumno asociado al curso.
+     * @param asignaturas La lista de asignaturas asociadas al curso.
+     * @throws IllegalArgumentException Si el nombre del curso no cumple con el patrón esperado,
+     * o si el alumno es nulo o la lista de asignaturas está vacía.
+     */
+    public Curso(String nombreCurso, Alumnos alumno, List<Asignatura> asignaturas) {
+        setNombreCurso(nombreCurso);
+        setAlumno(alumno);
+        setAsignaturas(asignaturas);
+    }
+
+    /**
+     * Obtiene el nombre del curso.
+     * 
+     * @return El nombre del curso.
+     */
+    public String getNombreCurso() {
+        return nombreCurso;
+    }
+    
+    /**
+     * Establece el nombre del curso.
+     * El nombre debe cumplir con el patrón "^\\D{1}º[A-Z]{1}$".
+     * 
+     * @param nombreCurso El nombre del curso.
+     * @throws IllegalArgumentException Si el nombre no cumple con el patrón esperado.
+     */
+    public void setNombreCurso(String nombreCurso) {
+        if (nombreCurso == null || !nombreCurso.matches("^\\D{1}º[A-Z]{1}$")) {
+            throw new IllegalArgumentException("El nombre del curso solo puede contener una letra, el símbolo 'º' y una letra mayúscula");
+        }
+        this.nombreCurso = nombreCurso;
+    }
+
+    /**
+     * Obtiene el alumno asociado al curso.
+     * 
+     * @return El alumno asociado al curso.
+     */
+    public Alumnos getAlumno() { 
+        return alumno;
+    }
+
+    /**
+     * Establece el alumno asociado al curso.
+     * 
+     * @param alumno El alumno que se desea asociar al curso.
+     * @throws IllegalArgumentException Si el alumno es nulo.
+     */
+    public void setAlumno(Alumnos alumno) {
+        if (alumno == null) {
+            throw new IllegalArgumentException("El alumno no puede ser nulo");
+        }
+        this.alumno = alumno;
+    }
+    
+    /**
+     * Obtiene la lista de asignaturas asociadas al curso.
+     * 
+     * @return La lista de asignaturas del curso.
+     */
+    public List<Asignatura> getAsignaturas() {
+        return asignaturas;
+    }
+    
+    /**
+     * Establece la lista de asignaturas asociadas al curso.
+     * La lista no debe ser nula ni vacía.
+     * 
+     * @param asignaturas La lista de asignaturas que se desea asociar al curso.
+     * @throws IllegalArgumentException Si la lista de asignaturas es nula o vacía.
+     */
+    public void setAsignaturas(List<Asignatura> asignaturas) {
+        if (asignaturas == null || asignaturas.isEmpty()) {
+            throw new IllegalArgumentException("El curso debe tener al menos una asignatura");
+        }
+        this.asignaturas = asignaturas;
+    }
+
+    /**
+     * Devuelve una representación en cadena de texto del curso, incluyendo su nombre, el alumno y las asignaturas.
+     * 
+     * @return Una cadena con la representación del curso.
+     */
+    @Override
+    public String toString() {
+        return "Curso [nombreCurso=" + nombreCurso + ", alumno=" + alumno + ", asignaturas=" + asignaturas + "]";
+    }
+}

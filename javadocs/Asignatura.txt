@@ -1,0 +1,119 @@
+package entornoAPPtrabajo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Representa una asignatura que tiene un nombre, una nota y un alumno asociado.
+ * Además, permite inscribir a un alumno en la asignatura y controlar si el alumno ya está inscrito.
+ */
+public class Asignatura {
+    
+    private String nombreasignatura;
+    private double notas;
+    private Alumnos alumno;
+
+    // Lista estática para gestionar los alumnos inscritos
+    private static final List<Alumnos> alumnousado = new ArrayList<>();
+
+    /**
+     * Constructor de la clase Asignatura.
+     * 
+     * @param nombreasignatura El nombre de la asignatura.
+     * @param notas La nota del alumno en la asignatura, debe estar entre 0 y 10.
+     * @param alumno El alumno inscrito en la asignatura.
+     * @throws IllegalArgumentException Si la nota no está en el rango válido o el nombre de la asignatura es nulo o vacío.
+     */
+    public Asignatura(String nombreasignatura, double notas, Alumnos alumno) {
+        setNotas(notas);
+        this.alumno = alumno;
+        setNombre(nombreasignatura);
+    }
+
+    /**
+     * Obtiene el nombre de la asignatura.
+     * 
+     * @return El nombre de la asignatura.
+     */
+    public String getNombre() {
+        return nombreasignatura;
+    }
+
+    /**
+     * Obtiene la nota del alumno en la asignatura.
+     * 
+     * @return La nota del alumno en la asignatura.
+     */
+    public double getNotas() {
+        return notas;
+    }
+
+    /**
+     * Obtiene el alumno inscrito en la asignatura.
+     * 
+     * @return El alumno inscrito en la asignatura.
+     */
+    public Alumnos getAlumno() {
+        return alumno;
+    }
+
+    /**
+     * Establece la nota del alumno en la asignatura.
+     * La nota debe estar entre 0 y 10.
+     * 
+     * @param notas La nota que se asignará.
+     * @throws IllegalArgumentException Si la nota no está en el rango válido.
+     */
+    public void setNotas(double notas) {
+        if (notas < 0 || notas > 10) {
+            throw new IllegalArgumentException("La nota debe estar entre 0 y 10");       
+        }
+        this.notas = notas;
+    }
+
+    /**
+     * Establece el nombre de la asignatura.
+     * El nombre no puede ser nulo ni estar vacío.
+     * 
+     * @param nombreasignatura El nombre de la asignatura.
+     * @throws IllegalArgumentException Si el nombre de la asignatura es nulo o vacío.
+     */
+    public void setNombre(String nombreasignatura) {
+        if (nombreasignatura == null || nombreasignatura.isEmpty()) {
+            throw new IllegalArgumentException("El nombre de la asignatura no puede estar vacío.");
+        }
+        this.nombreasignatura = nombreasignatura;
+    }
+
+    /**
+     * Inscribe a un alumno en la asignatura.
+     * Si el alumno ya está inscrito o es nulo, se lanza una excepción.
+     * 
+     * @param alumno El alumno que se desea inscribir.
+     * @throws IllegalArgumentException Si el alumno ya está inscrito o es nulo.
+     */
+    public void inscribirAlumno(Alumnos alumno) {
+        if (alumno == null || alumnousado.contains(alumno)) {
+            throw new IllegalArgumentException("No insertado");
+        }
+        alumnousado.add(alumno);
+        System.out.println("Alumno " + alumno.getNombre() + " inscrito en " + this.nombreasignatura);
+    }
+
+    /**
+     * Devuelve una representación en cadena de texto de la asignatura,
+     * incluyendo su nombre, la nota y el nombre del alumno inscrito.
+     * 
+     * @return Una cadena con la representación de la asignatura.
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Asignatura{");
+        sb.append("notas=").append(notas);
+        sb.append(", nombre=").append(nombreasignatura);
+        sb.append(", alumno=").append(alumno.getNombre());
+        sb.append('}');
+        return sb.toString();
+    }
+}
