@@ -107,7 +107,7 @@ public class mainasignatura {
     }
 
     private static void ingresarNotas() {
-        boolean datosValidos;
+       
         do {
             datosValidos = true;
             try {
