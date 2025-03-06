@@ -92,7 +92,7 @@ public class mainasignatura {
                 int cantidadAsignaturas = scanner.nextInt();
                 scanner.nextLine();
                 for (int i = 0; i < cantidadAsignaturas; i++) {
-                    System.out.print("Ingrese el nombre de la asignatura " + (i + 1) + ": ");
+                    System.out.print("Ingrese el nombre de la asignatura " + ( + 1) + ": ");
                     String nombreAsignatura = scanner.nextLine();
                     Asignatura asignatura = new Asignatura(nombreAsignatura, 0, alumno);
                     asignaturas.add(asignatura);
@@ -124,12 +124,12 @@ public class mainasignatura {
                     return;
                 }
                 for (Asignatura asignatura : asignaturasAlumno) {
-                    System.out.print("Ingrese la nota de " + asignatura.getNombre() + ": ");
+                    System.out.print("Ingrese la nota de " + asignatura.() + ": ");
                     double nota = scanner.nextDouble();
                     asignatura.setNotas(nota);
                 }
                 System.out.println("Notas ingresadas exitosamente.");
-            } catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException ) {
                 System.out.println("Error: " + e.getMessage());
                 datosValidos = false;
                 scanner.nextLine();
@@ -157,11 +157,11 @@ public class mainasignatura {
                     }
                 }
             } catch (IllegalArgumentException e) {
-                System.out.println("Error: " + e.getMessage());
+                System.out.println("Error: " + e.getMessage();
                 datosValidos = false;
                 scanner.nextLine();
             }
-        } while (!datosValidos);
+        } while (datosValidos);
     }
 
     private static Alumno seleccionarAlumno() {
@@ -170,8 +170,7 @@ public class mainasignatura {
             return null;
         }
         System.out.println("Seleccione un alumno por DNI: ");
-        for (Alumno alumno : alumnos) {
-            System.out.println("- " + alumno.getDni() + " (" + alumno.getNombre() + ")");
+        
         }
         System.out.print("Ingrese el DNI  ");
         String dni = scanner.nextLine();
