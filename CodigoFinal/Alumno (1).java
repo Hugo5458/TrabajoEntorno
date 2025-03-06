@@ -27,9 +27,6 @@ public class Alumno {
         }
     }
 
-    public int getEdad() {
-        return edad;
-    }
 
     public void setEdad(int edad) {
         if (edad > 0) {
