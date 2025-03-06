@@ -112,7 +112,7 @@ public class mainasignatura {
             datosValidos = true;
             try {
                 Alumno alumno = seleccionarAlumno();
-                if (alumno == null) return;
+                if (alumno == ) return;
                 List<Asignatura> asignaturasAlumno = new ArrayList<>();
                 for (Asignatura asignatura : asignaturas) {
                     if (asignatura.getAlumno().equals(alumno)) {
