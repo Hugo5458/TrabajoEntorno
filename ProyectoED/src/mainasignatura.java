@@ -64,8 +64,7 @@ public class mainasignatura {
                 System.out.println("Curso creado exitosamente.");
             } catch (IllegalArgumentException e) {
                 System.out.println("Error: " + e.getMessage());
-                datosValidos = false;
-                scanner.nextLine();
+
             }
         } while (!datosValidos);
     }
