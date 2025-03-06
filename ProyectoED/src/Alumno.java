@@ -11,17 +11,17 @@ public class Alumno {
     private static final List<String> dnisUsados = new ArrayList<>();
     private static final String PATRON_DNI = "^\\d{8}[A-Za-z]$";
 
-    Alumno(String nombre, String dni, int edad) {
+    public Alumno(String nombre, String dni, int edad) {
         setNombre(nombre);
         setEdad(edad);
         setDni(dni);
     }
 
-    String getNombre() {
+    public String getNombre() {
         return nombreAlumno;
     }
 
-    void setNombre(String nombre) {
+    public void setNombre(String nombre) {
         if (nombre != null && nombre.matches("^[A-Za-z\\s]{3,50}$")) {
             this.nombreAlumno = nombre;
         } else {
@@ -29,11 +29,11 @@ public class Alumno {
         }
     }
 
-    int getEdad() {
+    public int getEdad() {
         return edad;
     }
 
-    void setEdad(int edad) {
+    public void setEdad(int edad) {
         if (edad > 0) {
             this.edad = edad;
         } else {
@@ -41,11 +41,11 @@ public class Alumno {
         }
     }
 
-    String getDni() {
+    public String getDni() {
         return dni;
     }
 
-    void setDni(String dni) {
+    public void setDni(String dni) {
         if (!dni.matches(PATRON_DNI)) {
             throw new IllegalArgumentException("Formato de DNI incorrecto");
         }
