@@ -42,7 +42,7 @@ public class mainasignatura {
         boolean datosValidos;
         do {
             datosValidos = true;
-            try {
+            try{
                 System.out.print("Ingrese el nombre del alumno: ");
                 String nombre = scanner.nextLine();
                 System.out.print("Ingrese la edad del alumno: ");
