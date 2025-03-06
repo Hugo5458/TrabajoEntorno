@@ -170,8 +170,7 @@ public class mainasignatura {
             return null;
         }
         System.out.println("Seleccione un alumno por DNI: ");
-        for (Alumno alumno : alumnos) {
-            System.out.println("- " + alumno.getDni() + " (" + alumno.getNombre() + ")");
+        
         }
         System.out.print("Ingrese el DNI  ");
         String dni = scanner.nextLine();
