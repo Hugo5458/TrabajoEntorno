@@ -157,7 +157,7 @@ public class mainasignatura {
                     }
                 }
             } catch (IllegalArgumentException e) {
-                System.out.println("Error: " + e.getMessage());
+                System.out.println("Error: " + e.getMessage();
                 datosValidos = false;
                 scanner.nextLine();
             }
