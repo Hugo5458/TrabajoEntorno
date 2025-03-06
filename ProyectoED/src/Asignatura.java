@@ -50,4 +50,9 @@ public class Asignatura {
         System.out.println("Alumno " + alumno.getNombre() + " inscrito en " + this.nombreasignatura);
     }
 
+    @Override
+    public String toString() {
+        return "Asignatura [nombreasignatura=" + nombreasignatura + ", notas=" + notas + ", alumno=" + alumno + "]";
+    }
+
 }
