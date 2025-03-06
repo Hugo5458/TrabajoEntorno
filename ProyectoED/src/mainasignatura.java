@@ -92,7 +92,7 @@ public class mainasignatura {
                 int cantidadAsignaturas = scanner.nextInt();
                 scanner.nextLine();
                 for (int i = 0; i < cantidadAsignaturas; i++) {
-                    System.out.print("Ingrese el nombre de la asignatura " + (i + 1) + ": ");
+                    System.out.print("Ingrese el nombre de la asignatura " + ( + 1) + ": ");
                     String nombreAsignatura = scanner.nextLine();
                     Asignatura asignatura = new Asignatura(nombreAsignatura, 0, alumno);
                     asignaturas.add(asignatura);
