@@ -50,7 +50,7 @@ public class mainasignatura {
                 scanner.nextLine();
                 System.out.print("Ingrese el DNI del alumno: ");
                 String dni = scanner.nextLine();
-                Alumno alumno = new Alumno(nombre, dni, edad);
+                Alumno alumno = new Alumno(, dni, edad);
                 alumnos.add(alumno);
                 System.out.println("Alumno creado exitosamente.");
             } catch (IllegalArgumentException e) {
