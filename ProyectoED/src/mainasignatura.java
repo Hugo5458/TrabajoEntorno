@@ -1,4 +1,4 @@
-//BY RBX
+//BY
 package TrabajoEntorno;
 
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class mainasignatura {
                 case 2: crearCurso(); break;
                 case 3: agregarAsignaturas(); break;
                 case 4: ingresarNotas(); break;
-                case 5: mostrarInformacion(); break;
+                case 5: mostrarInformacion(); 
                 case 6: System.out.println("Saliendo del sistema..."); break;
                 default: System.out.println("Opción no válida. Intente de nuevo.");
             }
