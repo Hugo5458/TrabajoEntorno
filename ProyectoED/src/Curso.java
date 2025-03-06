@@ -42,8 +42,6 @@ public class Curso {
     public void setAsignaturas(List<Asignatura> asignaturas) {
         if (asignaturas == null || asignaturas.isEmpty()) {
             throw new IllegalArgumentException("El curso debe tener al menos una asignatura");
-        }
-        this.asignaturas = asignaturas;
     }
 
     @Override
