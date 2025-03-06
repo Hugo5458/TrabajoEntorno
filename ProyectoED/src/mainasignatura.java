@@ -172,7 +172,7 @@ public class mainasignatura {
         for (Alumno alumno : alumnos) {
             System.out.println("- " + alumno.getDni() + " (" + alumno.getNombre() + ")");
         }
-        System.out.print("Ingrese el DNI del alumno: ");
+        System.out.print("Ingrese el DNI  ");
         String dni = scanner.nextLine();
         for (Alumno alumno : alumnos) {
             if (alumno.getDni().equals(dni)) {
