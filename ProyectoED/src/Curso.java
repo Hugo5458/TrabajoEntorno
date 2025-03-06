@@ -1,10 +1,10 @@
-package TrabajoEntorno;
+package ProyectoED.src;
 
 import java.util.List;
 
 public class Curso {
     private String nombreCurso;
-    private List<Asignatura> asignaturas;
+    private List<Asignatura> asignaturas =;
     private Alumno alumno;
     
     public Curso(String nombreCurso, Alumno alumno, List<Asignatura> asignaturas) {

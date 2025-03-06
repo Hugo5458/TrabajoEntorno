@@ -42,7 +42,7 @@ public class mainasignatura {
         boolean datosValidos;
         do {
             datosValidos = true;
-            try {
+            try{
                 System.out.print("Ingrese el nombre del alumno: ");
                 String nombre = scanner.nextLine();
                 System.out.print("Ingrese la edad del alumno: ");
@@ -159,7 +159,7 @@ public class mainasignatura {
             } catch (IllegalArgumentException e) {
                 System.out.println("Error: " + e.getMessage());
                 datosValidos = false;
-                scanner.nextLine(); // Limpiar el buffer del scanner
+                scanner.nextLine();
             }
         } while (!datosValidos);
     }
@@ -173,7 +173,7 @@ public class mainasignatura {
         for (Alumno alumno : alumnos) {
             System.out.println("- " + alumno.getDni() + " (" + alumno.getNombre() + ")");
         }
-        System.out.print("Ingrese el DNI del alumno: ");
+        System.out.print("Ingrese el DNI  ");
         String dni = scanner.nextLine();
         for (Alumno alumno : alumnos) {
             if (alumno.getDni().equals(dni)) {

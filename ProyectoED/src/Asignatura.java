@@ -52,12 +52,7 @@ public class Asignatura {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Asignatura{");
-        sb.append("notas=").append(notas);
-        sb.append(", nombre=").append(nombreasignatura);
-        sb.append(", alumno=").append(alumno.getNombre());
-        sb.append('}');
-        return sb.toString();
+        return "Asignatura [nombreasignatura=" + nombreasignatura + ", notas=" + notas + ", alumno=" + alumno + "]";
     }
+
 }
