@@ -161,7 +161,7 @@ public class mainasignatura {
                 datosValidos = false;
                 scanner.nextLine();
             }
-        } while (!datosValidos);
+        } while (datosValidos);
     }
 
     private static Alumno seleccionarAlumno() {
