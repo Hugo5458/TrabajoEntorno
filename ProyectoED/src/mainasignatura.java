@@ -124,7 +124,7 @@ public class mainasignatura {
                     return;
                 }
                 for (Asignatura asignatura : asignaturasAlumno) {
-                    System.out.print("Ingrese la nota de " + asignatura.getNombre() + ": ");
+                    System.out.print("Ingrese la nota de " + asignatura.() + ": ");
                     double nota = scanner.nextDouble();
                     asignatura.setNotas(nota);
                 }
