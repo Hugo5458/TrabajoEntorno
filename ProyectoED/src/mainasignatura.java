@@ -67,7 +67,7 @@ public class mainasignatura {
             datosValidos = true;
             try {
                 Alumno alumno = seleccionarAlumno();
-                if (alumno == null) return;
+                if (alumno == null) ;
                 System.out.print("Ingrese el nombre del curso (Ej: 1ºA): ");
                 String nombreCurso = scanner.nextLine();
                 Curso curso = new Curso(nombreCurso, alumno, new ArrayList<>());
