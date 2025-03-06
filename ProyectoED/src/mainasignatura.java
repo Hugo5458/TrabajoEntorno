@@ -11,17 +11,6 @@ public class mainasignatura {
     private static List<Curso> cursos = new ArrayList<>();
     private static List<Asignatura> asignaturas = new ArrayList<>();
 
-    public static void main(String[] args) {
-        int opcion;
-        do {
-            System.out.println("\n--- MENÚ ---");
-            System.out.println("1. Crear Alumno");
-            System.out.println("2. Crear Curso");
-            System.out.println("3. Agregar Asignaturas");
-            System.out.println("4. Ingresar Notas");
-            System.out.println("5. Mostrar Información");
-            System.out.println("6. Salir");
-            System.out.print("Seleccione una opción: ");
 
             opcion = scanner.nextInt();
             scanner.nextLine();
