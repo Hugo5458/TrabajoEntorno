@@ -50,14 +50,4 @@ public class Asignatura {
         System.out.println("Alumno " + alumno.getNombre() + " inscrito en " + this.nombreasignatura);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Asignatura{");
-        sb.append("notas=").append(notas);
-        sb.append(", nombre=").append(nombreasignatura);
-        sb.append(", alumno=").append(alumno.getnombre());
-        sb.append('}');
-        return sb.toString();
-    }
 }
